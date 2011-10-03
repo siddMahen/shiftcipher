@@ -13,5 +13,5 @@ shiftcipher: $(OBJS)
 .PHONY: clean
 
 clean:
-	rm *~
 	rm ./build/*
+	rm shiftcipher
