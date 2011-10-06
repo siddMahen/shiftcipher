@@ -7,30 +7,64 @@
 int main(int argc, char *argv[]){
 
 	if(argv[1] == NULL || argv[1] == ""){
-		printf("An error occured, a shift value is required.\n");
+		printf("An error occured, a shift value is required. \n");
 		exit(EXIT_FAILURE);
 	}
 
-	int shift = atoi(argv[1]) % 26;
-	FILE *file = fopen(argv[2], "r");
+	int shift = atoi(argv[1]);
+	int encrypt;
+
+	if(argv[2] == NULL || argv[2] == ""){
+		printf("An error occured, please use -e or -d to set the encryption/decryption mode. \n");
+		exit(EXIT_FAILURE);
+	} else {
+		if(argv[2] == "-e"){
+			encrypt = 1;
+		}
+		if(argv[2] == "-d"){
+			encrypt = 0;
+		}
+		if(encrypt != 1 && encrypt != 0){
+			printf("An error occured, please use -e or -d to set the encryption/decryption mode. \n");
+			exit(EXIT_FAILURE);
+		}
+	}
+
+	FILE *file = fopen(argv[3], "r");
 	
 	if(file == NULL){
-		printf("An error occured opening the file %s \n",argv[2]);
+		printf("An error occured opening the file %s. \n",argv[3]);
 		exit(EXIT_FAILURE);
 	}
 
+	// Main body of the code begins here
+
+	// Retreives the integer representation of the first 4 bytes in the file
+	// which correspond the the first character and move the internal pointer
+	// forward
+
 	int i = fgetc(file);
+	
+	// Loops through each of the characters in the file until the end of the
+	// file is reached
+
+	int ctxt;
 
 	while(i != EOF){
-		printf("%c",(char) i);
+
+		if(encrypt == 1){
+			ctxt = shift+i;
+		}else{
+			ctxt = shift-i;
+		}
+		
+		// Performs the shift and prints the resulting ASCII character
+		char c = (char) ctxt;	
+		printf("%c", c);
 		i = fgetc(file);
 	}
-
-	// Do some stuff here
 
 	fclose(file);
 
 	return 0;
 }
-
-
