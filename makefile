@@ -5,6 +5,7 @@ OBJS = ./build/main.o
 
 shiftcipher: $(OBJS)
 	$(CC) -o $@ $(CFLAGS) $(OBJS)
+	@rm ./build/*
 
 ./build/main.o:
 	$(CC) -c ./src/main.c
