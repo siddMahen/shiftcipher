@@ -10,8 +10,11 @@ shiftcipher: $(OBJS)
 	$(CC) -c ./src/main.c
 	@mv main.o ./build/main.o
 
-.PHONY: clean
+.PHONY: clean clean-all 
 
 clean:
+	rm ./build/*
+
+clean-all:
 	rm ./build/*
 	rm shiftcipher

@@ -11,6 +11,9 @@ int main(int argc, char *argv[]){
 		exit(EXIT_FAILURE);
 	}
 
+	// Not really modulo, but still works as encryption because of
+	// the range of Unicode
+
 	int shift = atoi(argv[1]);
 	int encrypt;
 
@@ -39,9 +42,8 @@ int main(int argc, char *argv[]){
 
 	// Main body of the code begins here
 
-	// Retreives the integer representation of the first 4 bytes in the file
-	// which correspond the the first character and move the internal pointer
-	// forward
+	// Retreives the integer representation which correspond to
+	// the first character and move the internal pointer forward
 
 	int i = fgetc(file);
 	
@@ -58,7 +60,7 @@ int main(int argc, char *argv[]){
 			ctxt = shift-i;
 		}
 		
-		// Performs the shift and prints the resulting ASCII character
+		// Performs the shift and prints the resulting character
 		char c = (char) ctxt;	
 		printf("%c", c);
 		i = fgetc(file);
