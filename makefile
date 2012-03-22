@@ -7,7 +7,7 @@ shiftcipher: $(OBJS)
 	$(CC) -o $@ $(CFLAGS) $(OBJS)
 
 ./build/main.o:
-	$(CC) -c ./src/main.c
+	$(CC) -c -Wall ./src/main.c
 	@mv main.o ./build/main.o
 
 .PHONY: clean clean-all 

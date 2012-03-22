@@ -14,7 +14,7 @@ To build, run:
 If you have edited the source, and wish to implement changes, run:
 
 	make clean-all
-	make 
+	make
 
 ## Instructions:
 
@@ -22,13 +22,6 @@ If you have edited the source, and wish to implement changes, run:
 
 The `[-e|-d]` stands for encrypt and decrypt.
 
-## Test:
-
-Run the following test in the `shiftcipher` directory to make
-sure `shiftcipher` works.
-
-	./shiftcipher 10 -e README.md > test.txt
-	./shiftcipher 10 -d test.txt
-
-The output should be the contents of this document.
-
+This version of shiftcipher will only process capital ASCII characters
+in the range of 65-90. Therefore, please be sure to strip your plaintext
+of punctuation etc, before using this cipher, or you may lose information.
