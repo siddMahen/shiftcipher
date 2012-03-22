@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ `../shiftcipher 10 -e in-basic.txt` == `../shiftcipher 10 -d out-basic.txt` ]; then
+     echo -e "Pass"
+else
+    echo -e "Fail"
+fi
+
