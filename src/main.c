@@ -33,7 +33,10 @@ int main(int argc, char *argv[]){
             exit(EXIT_FAILURE);
         }
     }
-
+    if (argv[3] == NULL) {
+        printf("An error occured, please specify a file name after -e and -d. \n");
+        exit(EXIT_FAILURE);
+    }
     FILE *file = fopen(argv[3], "r");
 
     if(file == NULL){
