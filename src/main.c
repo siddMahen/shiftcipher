@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
     // the range of Unicode
 
     int shift = atoi(argv[1]) % 26;
-    int encrypt;
+    int encrypt = -1;
 
     if(argv[2] == NULL){
         printf("An error occured, please use -e or -d to set the encryption/decryption mode. \n");
